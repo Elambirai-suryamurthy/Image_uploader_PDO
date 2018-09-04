@@ -1,0 +1,23 @@
+<html>
+<body>
+<table border="2">
+<tr>
+<th>ID</th>
+<th>Image</th>
+</tr>
+<?php
+include "connect.php";
+$select = $con->prepare("SELECT * FROM pdo_image ");
+$select->setFetchMode(PDO::FETCH_ASSOC);
+$select->execute();
+while($data=$select->fetch()){
+?><tr>
+<td><?php echo $data['id']; ?></td>
+<td><img src="uploads/<?php echo $data['image']; ?>" width="450" height="400"></td>
+<?php
+}?>
+</tr></table>
+<a href="index.php">Add new image</a>
+    
+</body>
+</html>
